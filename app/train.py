@@ -45,10 +45,10 @@ def train_model(X_train, y_train, args):
         # Create a based model
         rf = RandomForestClassifier()
 
-        # Instantiate the grid search model
+        # Instantiate the random search model
         random_search = RandomizedSearchCV(estimator=rf, param_distributions=param_grid, cv=4, verbose=2, n_jobs=4)
 
-        # Fit the grid search to the data
+        # Fit the random search to the data
         random_search.fit(X_train, y_train)
         best_ = random_search.best_estimator_
 
