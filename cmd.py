@@ -83,7 +83,7 @@ def main(args, loglevel):
     elif args.mode == "test":
         logging.info("Loading model")
         model = load_model(args.model_path)
-        
+
         logging.info("Classification report")
         y_pred = model.predict(X_test)
         logging.info(classification_report(y_test, y_pred))
@@ -92,40 +92,40 @@ def main(args, loglevel):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         description="Chronic Kidney Disease ml app example.")
-parser.add_argument(
-    "--path",
-    help="path to csv data file",
-    default="dataset\preprocessed_dataset_full.csv")
-parser.add_argument(
-    "--mode",
-    help="mode to run the app",
-    default="train",
-    choices=["train", "test"]
-)
-parser.add_argument(
-    "--tuning",
-    help="hyperparameter tuning",
-    action="store_true")
-parser.add_argument(
-    "-v",
-    "--verbose",
-    help="increase output verbosity",
-    action="store_true")
-parser.add_argument(
-    "--save_model",
-    help="save model",
-    action="store_true")
-parser.add_argument(
-    "--model_path",
-    help="path to save model",
-    default="model")
+    parser.add_argument(
+        "-v",
+        "--verbose",
+        help="increase output verbosity",
+        action="store_true")
+    parser.add_argument(
+        "--mode",
+        help="mode to run the app",
+        default="train",
+        choices=["train", "test"]
+    )
+    parser.add_argument(
+        "--path",
+        help="path to csv data file",
+        default="dataset\preprocessed_dataset_full.csv")
+    parser.add_argument(
+        "--tuning",
+        help="hyperparameter tuning",
+        action="store_true")
+    parser.add_argument(
+        "--save_model",
+        help="save model",
+        action="store_true")
+    parser.add_argument(
+        "--model_path",
+        help="path to save model",
+        default="model")
 
-args = parser.parse_args()
+    args = parser.parse_args()
 
-# Setup logging
-if args.verbose:
-    loglevel = logging.DEBUG
-else:
-    loglevel = logging.INFO
+    # Setup logging
+    if args.verbose:
+        loglevel = logging.DEBUG
+    else:
+        loglevel = logging.INFO
 
-main(args, loglevel)
+    main(args, loglevel)
